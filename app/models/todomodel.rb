@@ -1,0 +1,2 @@
+class Todomodel < ApplicationRecord
+end
