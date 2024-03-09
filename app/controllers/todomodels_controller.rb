@@ -24,6 +24,11 @@ class TodomodelsController < ApplicationController
     end
   end
 
+  # GET /todos/1/edit
+  def edit
+    render json: @todomodel
+  end
+
   # PATCH/PUT /todomodels/1
   def update
     if @todomodel.update(todomodel_params)
@@ -38,6 +43,16 @@ class TodomodelsController < ApplicationController
     @todomodel.destroy!
   end
 
+
+  def calculate_deadline
+    day = params[:day]
+    day = day.split("-").map(&:to_i)
+    require "date"
+    now = Time.now
+    remaining = Date.new(day[0],day[1],day[2]) - Date.new(now.year,now.month,now.day)
+    render json: { remaining: remaining }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todomodel
@@ -46,6 +61,6 @@ class TodomodelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todomodel_params
-      params.require(:todomodel).permit(:title, :kind, :day)
+      params.require(:todomodel).permit(:title, :kind, :day, :url)
     end
 end

@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_08_121748) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_09_073329) do
   create_table "todomodels", force: :cascade do |t|
     t.string "title"
     t.string "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "kind"
+    t.string "url"
   end
 
 end
