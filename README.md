@@ -1,24 +1,21 @@
-# README
+**エンジニアを目指す学生向けのTodoアプリのバックエンド側**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+サポーターズのマンスリーハッカソンで作成。フロントエンド側のみNetlifyでデプロイしてみました。（バックエンド側のデプロイが上手くいかないため、本番環境ではダミーデータを使用しています） ↑Node.js(Express.js)で代用してみることも検討中
 
-Things you may want to cover:
+**なぜ作ったのか**
 
-* Ruby version
+エンジニアを目指すにあたり就活や開発などやるべきことが多くなっていった為、task管理をするアプリがあれば便利だと思った
 
-* System dependencies
+**使用技術**
 
-* Configuration
+・Ruby on Rails ・Docker
 
-* Database creation
+（フロントエンド側はReact.js ・MUI ・axios ・FullCalendar）
 
-* Database initialization
+**機能**
 
-* How to run the test suite
+①タスクの追加 ②タスクの完了、削除、編集 ③タイマー(残り何日か) ④完了したタスク ⑤カレンダー機能(現在開発中)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+#　苦労した点 ①フロントエンド側との連携 ②デプロイ 
