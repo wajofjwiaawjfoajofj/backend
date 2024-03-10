@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get "calculate_deadline" => "todomodels#calculate_deadline"
 end

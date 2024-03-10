@@ -22,6 +22,19 @@ class TodomodelsController < ApplicationController
     else
       render json: @todomodel.errors, status: :unprocessable_entity
     end
+
+    if @todomodel.valid?
+      day = @todomodel.day.split("-").map(&:to_i)
+      now = Time.now
+      remaining = Date.new(day[0], day[1], day[2]) - Date.new(now.year, now.month, now.day)
+      @todomodel.remaining = remaining.to_i
+    end
+  
+    if @todomodel.save
+      render json: @todomodel, status: :created, location: @todomodel
+    else
+      render json: @todomodel.errors, status: :unprocessable_entity
+    end
   end
 
   # GET /todos/1/edit
@@ -44,14 +57,18 @@ class TodomodelsController < ApplicationController
   end
 
 
-  def calculate_deadline
-    day = params[:day]
-    day = day.split("-").map(&:to_i)
-    require "date"
-    now = Time.now
-    remaining = Date.new(day[0],day[1],day[2]) - Date.new(now.year,now.month,now.day)
-    render json: { remaining: remaining }
-  end
+  #def calculate_deadline
+    #@day = params[:day]
+    #day = @day.split("-").map(&:to_i)
+    #require "date"
+    #now = Time.now
+    #remaining = Date.new(day[0],day[1],day[2]) - Date.new(now.year,now.month,now.day)
+    #remaining_days = remaining.to_i
+    #puts "Value of @day: #{@day}"
+
+    #render json: { remaining: remaining_days }
+    #p @day
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.
